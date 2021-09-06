@@ -8,7 +8,7 @@ import WelcomePage from './components/WelcomePage/WelcomePage';
 
 function App() {
 
-  const [logInValid, setLogInValid] = useState(true);
+  const [logInValid, setLogInValid] = useState(false);
 const [inSignUpPage,setInSignUpPage]=useState(false)
 
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const AuthContext=React.createContext({
-     logInValid:true,
+     logInValid:false,
     logInHandler:()=>{},
     logOutHandler:()=>{},
     inSignUpPage:false,

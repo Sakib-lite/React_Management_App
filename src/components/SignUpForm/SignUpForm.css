@@ -48,6 +48,7 @@ button {
 button:hover {
   background: transparent;
   border: 2px solid rgba(179, 27, 7, 0.911);
+  cursor:pointer
 }
 
 .showPassword {

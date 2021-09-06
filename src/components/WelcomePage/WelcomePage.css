@@ -21,6 +21,7 @@
    .wlcmBtn:hover {
      background-color: rgb(37, 36, 36);
      border: 2px solid rgba(179, 27, 7, 0.911);
+     cursor:pointer
    }
    
    

@@ -9,36 +9,33 @@ const LogInForm = () => {
 
   const [isTouched, setIsTouched] = useState(false);
 
-const [error,setError] = useState(null);
+  const [error, setError] = useState(null);
 
   const ctx = useContext(AuthContext);
 
   let loadedTasks = [];
 
   const fetchDataHandler = async () => {
-   setError(null)
-   try{
-    const response = await fetch(
-      "https://management-app-2cb09-default-rtdb.firebaseio.com/members.json"
-    );
+    setError(null);
+    try {
+      const response = await fetch(
+        "https://management-app-2cb09-default-rtdb.firebaseio.com/members.json"
+      );
 
-    const data = await response.json();
+      const data = await response.json();
 
-    for (const taskKey in data) {
-      loadedTasks.push({
-        id: taskKey,
-        username: data[taskKey].username,
-        password: data[taskKey].password,
-      });
+      for (const taskKey in data) {
+        loadedTasks.push({
+          id: taskKey,
+          username: data[taskKey].username,
+          password: data[taskKey].password,
+        });
+      }
+      console.log(loadedTasks);
+    } catch (err) {
+      setError(err.message);
     }
-    console.log(loadedTasks);
-  }catch(err){
-
-setError(err.message)
-
-  }
-
-};
+  };
 
   useEffect(() => {
     fetchDataHandler();
@@ -59,25 +56,20 @@ setError(err.message)
     box.checked ? setShowPassword(true) : setShowPassword(false);
   };
 
-  // const blurHandler = () => {
-  //   setIsTouched(true);
-  // };
-
   const logInFormSubmitHandler = (e) => {
     e.preventDefault();
     fetchDataHandler();
 
-    console.log(loadedTasks);
     for (const i of loadedTasks) {
       if (i.username === enteredUsername && i.password === enteredPassword) {
-        ctx.logInHandler() && setEnteredUsername("") && setEnteredPassword() 
-      }else{
-        setIsTouched(true)
+        ctx.logInHandler() && setEnteredUsername("") && setEnteredPassword();
+      } else {
+        setIsTouched(true);
       }
     }
   };
 
-  loadedTasks=[]
+  loadedTasks = [];
 
   return (
     <form>
@@ -90,11 +82,8 @@ setError(err.message)
           placeholder=""
           onChange={usernameInputHandler}
           value={enteredUsername}
-          
-          
-          
         />
-        {isTouched && (<p className="invalid_message">Invalid input</p>)}
+        {isTouched && <p className="invalid_message">Invalid input</p>}
       </div>
       <br />
       <div>
@@ -104,15 +93,18 @@ setError(err.message)
           placeholder=""
           onChange={passwordInputHandler}
           value={enteredPassword}
-        
-         
         />
-         {isTouched && (<p className="invalid_message">Invalid input</p>)}
+        {isTouched && <p className="invalid_message">Invalid input</p>}
       </div>
 
       <div className="showPassword">
         <label> Show Password </label>
-        <input type="Checkbox" onClick={showPasswordHandler} id="checkbox" className="noBoxShadow"/>
+        <input
+          type="Checkbox"
+          onClick={showPasswordHandler}
+          id="checkbox"
+          className="noBoxShadow"
+        />
       </div>
       <br />
       <div>

@@ -49,6 +49,7 @@ button{
 button:hover{
   background: transparent;
   border: 2px solid rgba(69, 39, 160, .4);
+  cursor:pointer
 }
 input[type=password]{
      display: inline-block;

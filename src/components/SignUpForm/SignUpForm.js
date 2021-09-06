@@ -1,12 +1,12 @@
-import { useState, useEffect ,useContext} from "react";
+import { useState, useEffect, useContext } from "react";
 import useInput from "../../hooks/use-input";
 import "./SignUpForm.css";
-import AuthContext from '../../context/auth-context';
+import AuthContext from "../../context/auth-context";
 
 const SignUpForm = () => {
   const [isFormValid, setIsFormValid] = useState(false);
 
-const ctx=useContext(AuthContext)
+  const ctx = useContext(AuthContext);
 
   const {
     enteredValue: name,
@@ -85,26 +85,12 @@ const ctx=useContext(AuthContext)
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    name,
-    email,
-    mobileNumber,
-    rollNumber,
-    birthDate,
-    username,
-    password,
-  ]);
+  }, [name, email, mobileNumber, rollNumber, birthDate, username, password]);
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
-
-
-    ctx.signOutPageHandler()
-
-    
-
-
+    ctx.signOutPageHandler();
 
     nameInputReset();
     emailInputReset();
@@ -115,8 +101,8 @@ const ctx=useContext(AuthContext)
     passwordInputReset();
   };
 
-const sendDataHandler= async function (userData){
-userData = {
+  const sendDataHandler = async function (userData) {
+    userData = {
       name,
       email,
       mobileNumber,
@@ -125,14 +111,15 @@ userData = {
       username,
       password,
     };
-await fetch('https://management-app-2cb09-default-rtdb.firebaseio.com/members.json',{
-    method:'POST',
-    body: JSON.stringify(userData),
-    headers:{'content-type':'application/json'}
-
-  })
-
-}
+    await fetch(
+      "https://management-app-2cb09-default-rtdb.firebaseio.com/members.json",
+      {
+        method: "POST",
+        body: JSON.stringify(userData),
+        headers: { "content-type": "application/json" },
+      }
+    );
+  };
 
   const nameError = nameNotValid ? "invalid" : "";
   const emailError = emailNotValid ? "invalid" : "";
@@ -144,7 +131,7 @@ await fetch('https://management-app-2cb09-default-rtdb.firebaseio.com/members.js
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <br/> <br/> <br/> <br/> <br/> <br/> <br/>
+      <br /> <br /> <br /> <br /> <br /> <br /> <br />
       <h2>Sign Up</h2>
       <div>
         <label> Full Name: </label>
@@ -260,12 +247,12 @@ await fetch('https://management-app-2cb09-default-rtdb.firebaseio.com/members.js
           </p>
         )}
       </div>
-
       <button type="submit" disabled={!isFormValid} onClick={sendDataHandler}>
         Submit{" "}
       </button>
-      {!isFormValid && <p className="invalid_message"> Fill Up all the fields</p>}
-
+      {!isFormValid && (
+        <p className="invalid_message"> Fill Up all the fields</p>
+      )}
       <div>
         <button id="submitBtn" type="button" onClick={ctx.signOutPageHandler}>
           Log In
