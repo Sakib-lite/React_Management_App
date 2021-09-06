@@ -1,0 +1,98 @@
+form {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  background: rgb(68 68 90);
+  padding: 100px;
+}
+
+label {
+  font-family: sans-serif;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color: #fff;
+}
+
+input {
+     display: inline-block;
+     border: none;
+     text-align: left;
+     box-shadow: 3px 2px rgba(121, 83, 210, 0.3);
+     padding: 10px;
+     width: 350px;
+     margin: 10px 0;
+     background: transparent;
+     color: #fff;
+     font-size: 20px;
+   }
+   
+   input:focus {
+     border: none;
+     color: #fff;
+   }
+   
+
+button {
+  background: transparent;
+  color: #fff;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 20px 0;
+  padding: 10px 30px;
+  border: 2px solid #fff;
+}
+
+button:hover {
+  background: transparent;
+  border: 2px solid rgba(179, 27, 7, 0.911);
+}
+
+.showPassword {
+  justify-items: center;
+}
+.showPassword label {
+  font-family: sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+
+#submitBtn {
+  float: left;
+  position: absolute;
+  bottom: 10px;
+  right: 5%;
+  background-color: rgba(45, 45, 63, 0.918);
+}
+h2 {
+  font-size: 35px;
+  text-align: center;
+  color: rgb(179, 162, 162);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.invalid {
+     background-color:rgba(151, 20, 20, 0.459)
+}
+
+button:disabled,
+button:focus:disabled,
+button:hover:disabled,
+button:active:disabled {
+  background: #ccc;
+  border-color: #ccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+.invalid_message {
+  color:rgb(216, 61, 61);
+}
+#submitBtn {
+  position:absolute;
+  bottom:10px;
+  right: 5%;
+  background-color: rgba(45, 45, 63, 0.918);
+}
